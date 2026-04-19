@@ -992,6 +992,12 @@ canvas,
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE/Edge */
+}
+
+.main-content .panels-grid::-webkit-scrollbar {
+  display: none;  /* Chrome/Safari/Opera */
 }
 
 .main-content .panels-grid .add-panel-block {
@@ -1002,7 +1008,7 @@ canvas,
 .main-content .football-news-list {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow: hidden !important;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -1011,6 +1017,12 @@ canvas,
   display: flex;
   flex-direction: column;
   gap: 8px;
+  scrollbar-width: none !important;  /* Firefox */
+  -ms-overflow-style: none !important;  /* IE/Edge */
+}
+
+.main-content .football-news-list::-webkit-scrollbar {
+  display: none !important;  /* Chrome/Safari/Opera */
 }
 
 /* Uniform news card styling in football variant */
@@ -1018,6 +1030,7 @@ canvas,
   display: flex;
   flex-direction: column;
   gap: 8px;
+  overflow: hidden;
 }
 
 .main-content .football-news-list .fn-item {
@@ -1029,6 +1042,7 @@ canvas,
   border-left: 3px solid var(--semantic-positive, #44ff88);
   border-radius: 6px;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .main-content .football-news-list .fn-image-placeholder {
@@ -20310,32 +20324,21 @@ body.map-width-resizing {
 @media (min-width: 1600px) {
   .main-content {
     display: grid;
-    grid-template-columns: var(--map-col-width, 60%) 6px 1fr;
-    grid-template-rows: 1fr auto;
-    gap: 4px 0;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 1fr;
     overflow: hidden;
-  }
-
-  .map-width-resize-handle {
-    display: flex;
-    grid-column: 2;
-    grid-row: 1;
   }
 
   .main-content.map-hidden {
     grid-template-columns: 1fr;
   }
 
-  .main-content.map-hidden .panels-grid {
+  .main-content.map-hidden .map-section {
     grid-column: 1;
-  }
-
-  .main-content.map-hidden .map-width-resize-handle {
-    display: none;
   }
 
   .map-section {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 1;
     height: 100% !important;
     min-height: 0;
@@ -20363,69 +20366,45 @@ body.map-width-resizing {
     padding: 0;
   }
 
-  .map-resize-handle {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    height: 12px;
-    background: var(--border-subtle);
-    margin: 0;
-    cursor: ns-resize;
-  }
-
-  .map-resize-handle:hover {
-    background: var(--accent);
-  }
-
   .map-section.pinned {
     position: relative;
   }
 
-  .map-resize-handle {
-    display: flex;
-  }
-
-  .panels-grid {
-    grid-column: 3;
+  .main-content .panels-grid {
+    grid-column: 1;
     grid-row: 1;
     min-height: 0;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-auto-rows: minmax(200px, 380px);
-    align-content: start;
-    overflow-y: auto;
+    overflow: hidden !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex-shrink: 0;
+    scrollbar-width: none !important;
+  }
+
+  .main-content .panels-grid::-webkit-scrollbar {
+    display: none !important;
   }
 }
 
 /* Desktop app grid layout (active at any width >= 900px via JS class) */
 .main-content.desktop-grid {
   display: grid;
-  grid-template-columns: var(--map-col-width, 60%) 6px 1fr;
-  grid-template-rows: 1fr auto;
-  gap: 4px 0;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: 1fr;
   overflow: hidden;
-}
-
-.main-content.desktop-grid .map-width-resize-handle {
-  display: flex;
-  grid-column: 2;
-  grid-row: 1;
 }
 
 .main-content.desktop-grid.map-hidden {
   grid-template-columns: 1fr;
 }
 
-.main-content.desktop-grid.map-hidden .panels-grid {
+.main-content.desktop-grid.map-hidden .map-section {
   grid-column: 1;
-}
-
-.main-content.desktop-grid.map-hidden .map-width-resize-handle {
-  display: none;
 }
 
 .main-content.desktop-grid .map-section {
-  grid-column: 1;
+  grid-column: 2;
   grid-row: 1;
   height: 100% !important;
   min-height: 0;
@@ -20437,29 +20416,19 @@ body.map-width-resizing {
 }
 
 .main-content.desktop-grid .panels-grid {
-  grid-column: 3;
+  grid-column: 1;
   grid-row: 1;
   min-height: 0;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-auto-rows: minmax(200px, 380px);
-  align-content: start;
-  overflow-y: auto;
+  overflow: hidden !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex-shrink: 0;
+  scrollbar-width: none !important;
 }
 
-.main-content.desktop-grid .map-resize-handle {
-  position: relative;
-  bottom: auto;
-  left: auto;
-  right: auto;
-  height: 12px;
-  background: var(--border-subtle);
-  margin: 0;
-  cursor: ns-resize;
-  display: flex;
-}
-
-.main-content.desktop-grid .map-resize-handle:hover {
-  background: var(--accent);
+.main-content.desktop-grid .panels-grid::-webkit-scrollbar {
+  display: none !important;
 }
 
 .main-content.desktop-grid .map-bottom-grid:empty {
