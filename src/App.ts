@@ -728,6 +728,7 @@ export class App {
       authHeaderWidget: null,
       tvMode: null,
       happyAllItems: [],
+      footballNews: [],
       isDestroyed: false,
       isPlaybackMode: false,
       isIdle: false,
@@ -940,7 +941,7 @@ export class App {
     this.state.signalModal.setLocationClickHandler((lat, lon) => {
       this.state.map?.setCenter(lat, lon, 4);
     });
-    if (!this.state.isMobile) {
+    if (!this.state.isMobile && SITE_VARIANT !== 'football') {
       this.state.findingsBadge = new IntelligenceGapBadge();
       this.state.findingsBadge.setOnSignalClick((signal) => {
         if (this.state.countryBriefPage?.isVisible()) return;
@@ -1185,6 +1186,15 @@ export class App {
   private setupRefreshIntervals(): void {
     // Always refresh news for all variants
     this.refreshScheduler.scheduleRefresh('news', () => this.dataLoader.loadNews(), REFRESH_INTERVALS.feeds);
+
+    // Football variant: refresh football news
+    if (SITE_VARIANT === 'football') {
+      this.refreshScheduler.scheduleRefresh(
+        'football-news',
+        () => this.dataLoader.loadFootballNews(),
+        REFRESH_INTERVALS.footballNews,
+      );
+    }
 
     // Happy variant only refreshes news -- skip all geopolitical/financial/military refreshes
     if (SITE_VARIANT !== 'happy') {

@@ -151,6 +151,7 @@
     "filterSources": "Kaynaklari filtrele...",
     "sourcesEnabled": "{{enabled}}/{{total}} aktif",
     "finance": "FINANS",
+    "football": "Football",
     "toggleTheme": "Koyu/acik tema degistir",
     "panelDisplayCaption": "Gösterge panelinde hangi panellerin gösterileceğini seçin",
     "tabGeneral": "Genel",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "Ticaret Politikası"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Canli Haberler",
     "markets": "Piyasalar",
     "map": "Kuresel Durum",

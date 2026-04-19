@@ -149,6 +149,7 @@
     "filterSources": "Filtruj źródła...",
     "sourcesEnabled": "{{enabled}}/{{total}} włączone",
     "finance": "FINANCE",
+    "football": "Football",
     "toggleTheme": "Przełącz tryb ciemny/jasny",
     "panelDisplayCaption": "Wybierz, które panele wyświetlać na pulpicie",
     "tabGeneral": "Ogólne",
@@ -207,6 +208,8 @@
     "selectRegion": "Wybierz region"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Wiadomości na żywo",
     "markets": "Rynki",
     "map": "Sytuacja globalna",

@@ -151,6 +151,7 @@
     "filterSources": "소스 필터...",
     "sourcesEnabled": "{{enabled}}/{{total}} 활성화됨",
     "finance": "금융",
+    "football": "Football",
     "toggleTheme": "다크/라이트 모드 전환",
     "panelDisplayCaption": "대시보드에 표시할 패널을 선택하세요",
     "tabGeneral": "일반",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "통상 정책"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "실시간 뉴스",
     "markets": "시장",
     "map": "글로벌 상황",

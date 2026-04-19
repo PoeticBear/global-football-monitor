@@ -1,5 +1,7 @@
 {
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Notícias ao vivo",
     "markets": "Mercados",
     "heatmap": "Mapa de calor do setor",
@@ -2291,6 +2293,7 @@
     "filterSources": "Filtrar fontes...",
     "sourcesEnabled": "{{enabled}}/{{total}} ativado",
     "finance": "FINANCE",
+    "football": "Football",
     "toggleTheme": "Alternar modo claro/escuro",
     "panelDisplayCaption": "Escolha quais painéis exibir no painel",
     "tabGeneral": "Geral",

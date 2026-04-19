@@ -151,6 +151,7 @@
     "filterSources": "Фильтр источников...",
     "sourcesEnabled": "{{enabled}}/{{total}} включено",
     "finance": "ФИНАНСЫ",
+    "football": "Football",
     "toggleTheme": "Переключить тёмную/светлую тему",
     "panelDisplayCaption": "Выберите панели для отображения на панели управления",
     "tabGeneral": "Общее",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "Торговая политика"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Новости в реальном времени",
     "markets": "Рынки",
     "map": "Глобальная обстановка",

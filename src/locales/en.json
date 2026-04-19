@@ -215,6 +215,7 @@
     "sourcesEnabled": "{{enabled}}/{{total}} enabled",
     "finance": "FINANCE",
     "commodity": "COMMODITY",
+    "football": "FOOTBALL",
     "toggleTheme": "Toggle dark/light mode",
     "panelDisplayCaption": "Choose which panels to show on the dashboard",
     "tabGeneral": "General",
@@ -278,6 +279,8 @@
     "panelCatHappyPlanet": "Planet & Giving"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Live News",
     "markets": "Markets",
     "marketImplications": "AI Market Implications",

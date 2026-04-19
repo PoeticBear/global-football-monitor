@@ -1,5 +1,7 @@
 {
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Live nieuws",
     "markets": "Markten",
     "heatmap": "Sector-hittekaart",
@@ -2291,6 +2293,7 @@
     "filterSources": "Bronnen filteren...",
     "sourcesEnabled": "{{enabled}}/{{total}} ingeschakeld",
     "finance": "FINANCE",
+    "football": "Football",
     "toggleTheme": "Schakel tussen de donkere/lichte modus",
     "panelDisplayCaption": "Kies welke panelen op het dashboard worden weergegeven",
     "tabGeneral": "Algemeen",

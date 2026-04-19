@@ -151,6 +151,7 @@
     "filterSources": "ソースを絞り込み...",
     "sourcesEnabled": "{{enabled}}/{{total}} 有効",
     "finance": "金融",
+    "football": "Football",
     "toggleTheme": "ダーク/ライトモード切替",
     "panelDisplayCaption": "ダッシュボードに表示するパネルを選択",
     "tabGeneral": "一般",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "通商政策"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "ライブニュース",
     "markets": "市場",
     "map": "グローバル情勢",

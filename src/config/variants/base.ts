@@ -54,6 +54,7 @@ export const REFRESH_INTERVALS = {
   correlationEngine: 5 * 60 * 1000,
   defensePatents: 24 * 60 * 60 * 1000, // 24h — data is weekly, daily poll is sufficient
   wsbTickers: 10 * 60 * 1000,
+  footballNews: 5 * 60 * 1000,
   crossSourceSignals: 15 * 60 * 1000,
   hormuzTracker: 60 * 60 * 1000, // 1h — data updates daily
   hyperliquidFlow: 5 * 60 * 1000, // 5min — matches Railway seed cadence

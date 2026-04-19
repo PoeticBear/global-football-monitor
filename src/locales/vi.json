@@ -151,6 +151,7 @@
     "filterSources": "Lọc nguồn...",
     "sourcesEnabled": "{{enabled}}/{{total}} đã bật",
     "finance": "TÀI CHÍNH",
+    "football": "Football",
     "toggleTheme": "Chuyển chế độ sáng/tối",
     "panelDisplayCaption": "Chọn bảng hiển thị trên bảng điều khiển",
     "tabGeneral": "Chung",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "Chính sách Thương mại"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Tin tức Trực tiếp",
     "markets": "Thị trường",
     "map": "Tình hình Toàn cầu",

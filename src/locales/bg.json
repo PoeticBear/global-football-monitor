@@ -151,6 +151,7 @@
     "filterSources": "Филтриране на източници...",
     "sourcesEnabled": "{{enabled}}/{{total}} активирани",
     "finance": "ФИНАНСИ",
+    "football": "Football",
     "toggleTheme": "Превключване на тъмен/светъл режим",
     "panelDisplayCaption": "Изберете кои панели да се показват на табло",
     "tabGeneral": "Основно",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "Търговска политика"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Живи новини",
     "markets": "Пазари",
     "map": "Глобална ситуация",

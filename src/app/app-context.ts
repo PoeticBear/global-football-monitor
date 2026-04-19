@@ -78,6 +78,7 @@ export interface AppContext {
   authHeaderWidget: import('@/components/AuthHeaderWidget').AuthHeaderWidget | null;
   tvMode: import('@/services/tv-mode').TvModeController | null;
   happyAllItems: NewsItem[];
+  footballNews: NewsItem[];
   isDestroyed: boolean;
   isPlaybackMode: boolean;
   isIdle: boolean;

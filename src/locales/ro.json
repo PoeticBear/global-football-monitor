@@ -151,6 +151,7 @@
     "filterSources": "Filtrare surse...",
     "sourcesEnabled": "{{enabled}}/{{total}} activat",
     "finance": "FINANȚE",
+    "football": "Football",
     "toggleTheme": "Comutați modul întuneric/luminos",
     "panelDisplayCaption": "Alegeți ce panouri să afișați pe tabloul de bord",
     "tabGeneral": "General",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "Politica comercială"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Știri Live",
     "markets": "Piețe",
     "map": "Situația globală",

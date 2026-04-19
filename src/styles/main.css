@@ -413,6 +413,16 @@ canvas,
   color: var(--accent);
 }
 
+.football-logo {
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--semantic-positive, #44ff88);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .version {
   font-size: 9px;
   color: var(--muted);
@@ -965,11 +975,124 @@ canvas,
   flex: 1 1 0;
   min-height: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   overflow-y: auto;
   overflow-x: hidden;
   background: var(--bg);
   width: 100%;
+  align-items: stretch;
+}
+
+.main-content .panels-grid {
+  width: 320px;
+  min-width: 280px;
+  max-width: 480px;
+  flex-shrink: 0;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content .panels-grid .add-panel-block {
+  display: none !important;
+}
+
+/* Football news list directly in panels-grid */
+.main-content .football-news-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin: 4px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Uniform news card styling in football variant */
+.main-content .football-news-list .fn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.main-content .football-news-list .fn-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--surface, #1a1a1a);
+  border: 1px solid var(--border, #2a2a2a);
+  border-left: 3px solid var(--semantic-positive, #44ff88);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.main-content .football-news-list .fn-image-placeholder {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.main-content .football-news-list .fn-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.main-content .football-news-list .fn-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-content .football-news-list .fn-title {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text, #e8e8e8);
+  margin: 0;
+}
+
+.main-content .football-news-list .fn-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-dim, #888);
+}
+
+/* Hide football-news panel - news shown directly in panels-grid instead */
+[data-panel="football-news"] {
+  display: none !important;
+}
+
+.main-content .map-section {
+  flex: 1;
+  min-height: 0 !important;
+  max-height: none !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  flex-shrink: 1 !important;
+}
+
+.main-content .map-container {
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  height: 100% !important;
+}
+
+.main-content .map-resize-handle,
+.main-content .map-bottom-grid {
+  display: none !important;
 }
 
 .map-section {
@@ -16128,6 +16251,16 @@ a.prediction-link:hover {
   color: #00e5ff;
   border-top: 1px solid rgba(0, 229, 255, 0.2);
   pointer-events: none;
+}
+
+/* Hide author badge in football variant */
+[data-variant="football"] .map-author-badge {
+  display: none;
+}
+
+/* Hide layer toggles panel in football variant */
+[data-variant="football"] .layer-toggles {
+  display: none;
 }
 
 /* Map tile attribution */

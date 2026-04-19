@@ -439,6 +439,11 @@ export class DataLoaderManager implements AppModule {
       { name: 'news', task: runGuarded('news', () => this.loadNews()) },
     ];
 
+    // Football variant: load football news
+    if (SITE_VARIANT === 'football') {
+      tasks.push({ name: 'footballNews', task: runGuarded('footballNews', () => this.loadFootballNews()) });
+    }
+
     // Happy variant only loads news data -- skip all geopolitical/financial/military data
     if (SITE_VARIANT !== 'happy') {
       if (shouldLoadAny(['markets', 'heatmap', 'commodities', 'crypto', 'energy-complex', 'crypto-heatmap', 'defi-tokens', 'ai-tokens', 'other-tokens'])) {
@@ -1204,6 +1209,153 @@ export class DataLoaderManager implements AppModule {
         this.ctx.mapLayers.kindness ? Promise.resolve(this.loadKindnessData()) : Promise.resolve(),
       ]);
     }
+  }
+
+  /**
+   * 加载足球新闻数据（仅 football 变体）。
+   * 从 data/latest_football_news.json 读取。
+   */
+  async loadFootballNews(): Promise<void> {
+    if (this.ctx.isDestroyed) return;
+
+    try {
+      const footballNewsJson = await import('@/data/latest_football_news.json');
+      const { toNewsItemFromJson } = await import('@/types/football');
+
+      const items = footballNewsJson.news.map(toNewsItemFromJson);
+
+      // 直接渲染新闻列表到 footballNewsList 容器
+      this.renderFootballNewsList(items);
+
+      // 推送到AI简报面板（FootballBriefPanel）
+      this.callPanel('football-brief', 'setNews', items);
+
+      // 推送地理位置数据到地图
+      const geoLocated = items.filter(it => it.lat != null && it.lon != null);
+      if (geoLocated.length > 0) {
+        const markers = geoLocated.map(it => ({
+          lat: it.lat!,
+          lon: it.lon!,
+          title: it.title,
+          threatLevel: it.threat?.level ?? 'info',
+          timestamp: it.pubDate,
+        }));
+        this.ctx.map?.setNewsLocations(markers);
+      }
+
+      // 保存到上下文，供搜索和其他服务使用
+      this.ctx.footballNews = items;
+    } catch (e) {
+      if (!this.ctx.isDestroyed) {
+        console.error('[DataLoader] Football news failed:', e);
+      }
+    }
+  }
+
+  /**
+   * 渲染足球新闻列表到 footballNewsList 容器
+   */
+  private renderFootballNewsList(items: NewsItem[]): void {
+    const container = document.getElementById('footballNewsList');
+    if (!container) return;
+
+    if (!items.length) {
+      container.innerHTML = '<div class="fn-empty">No football news available.</div>';
+      return;
+    }
+
+    const html = items.map((item, i) => {
+      const time = this.formatFootballTime(item.pubDate);
+      const locationName = item.locationName ? this.escapeHtml(item.locationName) : '';
+      const hasLocation = item.lat != null && item.lon != null;
+      const mapBtn = hasLocation
+        ? `<button class="fn-map-btn" data-lat="${item.lat}" data-lon="${item.lon}" title="Show on map">
+             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+               <circle cx="12" cy="10" r="3"/>
+             </svg>
+           </button>`
+        : '';
+      const locationHtml = locationName
+        ? `<div class="fn-location">
+             <span class="fn-location-icon">
+               <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                 <circle cx="12" cy="10" r="3" fill="var(--panel-bg)"/>
+               </svg>
+             </span>
+             <span class="fn-location-name">${locationName}</span>
+             ${mapBtn}
+           </div>`
+        : '';
+      const imageHtml = `<div class="fn-image-placeholder">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+        </div>`;
+      return `
+        <div class="fn-item" data-index="${i}" ${item.link ? 'data-link="' + this.escapeHtml(item.link) + '"' : ''}>
+          ${imageHtml}
+          <div class="fn-content">
+            <div class="fn-item-header">
+              <span class="fn-source">${this.escapeHtml(item.source)}</span>
+              <span class="fn-time">${time}</span>
+            </div>
+            <div class="fn-title">${this.escapeHtml(item.title)}</div>
+            ${locationHtml}
+          </div>
+        </div>`;
+    }).join('');
+
+    container.innerHTML = `<div class="fn-list" translate="no">${html}</div>`;
+
+    // 绑定地图定位按钮事件
+    container.querySelectorAll('.fn-map-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const lat = parseFloat((btn as HTMLElement).dataset.lat ?? '');
+        const lon = parseFloat((btn as HTMLElement).dataset.lon ?? '');
+        if (!isNaN(lat) && !isNaN(lon)) {
+          this.ctx.map?.setCenter(lat, lon, 6);
+          this.ctx.map?.flashLocation(lat, lon, 3000);
+        }
+      });
+    });
+
+    // 绑定新闻项点击事件 - 点击卡片在地图上定位
+    container.querySelectorAll('.fn-item').forEach((item, idx) => {
+      item.addEventListener('click', (e) => {
+        // 忽略地图按钮的点击
+        if ((e.target as HTMLElement).closest('.fn-map-btn')) return;
+        const newsItem = items[idx];
+        if (newsItem?.lat != null && newsItem?.lon != null) {
+          this.ctx.map?.setCenter(newsItem.lat, newsItem.lon, 8);
+          this.ctx.map?.flashLocation(newsItem.lat, newsItem.lon, 3000);
+        }
+      });
+    });
+  }
+
+  private formatFootballTime(date: Date): string {
+    const now = Date.now();
+    const diff = now - date.getTime();
+    const mins = Math.floor(diff / 60_000);
+    if (mins < 1) return 'now';
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    return date.toLocaleDateString();
+  }
+
+  private escapeHtml(str: string): string {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
 
   async loadStockAnalysis(): Promise<void> {

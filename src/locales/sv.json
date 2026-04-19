@@ -1,5 +1,7 @@
 {
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Live Nyheter",
     "markets": "Marknader",
     "heatmap": "Sektor värmekarta",
@@ -2291,6 +2293,7 @@
     "filterSources": "Filtrera källor...",
     "sourcesEnabled": "{{enabled}}/{{total}} aktiverad",
     "finance": "FINANCE",
+    "football": "Football",
     "toggleTheme": "Växla mellan mörkt/ljusläge",
     "panelDisplayCaption": "Välj vilka paneler som ska visas på instrumentpanelen",
     "tabGeneral": "Allmänt",

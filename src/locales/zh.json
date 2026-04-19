@@ -138,6 +138,7 @@
   "header": {
     "world": "世界",
     "tech": "科技",
+    "football": "足球",
     "live": "实时",
     "search": "搜索",
     "settings": "设置",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "贸易政策"
   },
   "panels": {
+    "footballNews": "足球新闻",
+    "footballBrief": "AI 简报",
     "liveNews": "实时新闻",
     "markets": "市场",
     "map": "全球态势",

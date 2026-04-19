@@ -151,6 +151,7 @@
     "filterSources": "กรองแหล่งข้อมูล...",
     "sourcesEnabled": "เปิดใช้งาน {{enabled}}/{{total}}",
     "finance": "การเงิน",
+    "football": "Football",
     "toggleTheme": "สลับโหมดมืด/สว่าง",
     "panelDisplayCaption": "เลือกแผงที่จะแสดงบนแดชบอร์ด",
     "tabGeneral": "ทั่วไป",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "นโยบายการค้า"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "ข่าวสด",
     "markets": "ตลาด",
     "map": "สถานการณ์โลก",

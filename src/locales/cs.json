@@ -149,6 +149,7 @@
     "filterSources": "Filtrovat zdroje...",
     "sourcesEnabled": "Zapnuto: {{enabled}}/{{total}}",
     "finance": "FINANCE",
+    "football": "Football",
     "toggleTheme": "Přepnout tmavý/světlý režim",
     "panelDisplayCaption": "Vyberte, které panely se mají zobrazit na řídicím panelu",
     "tabGeneral": "Obecné",
@@ -207,6 +208,8 @@
     "selectRegion": "Vybrat region"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Živé zprávy",
     "markets": "Trhy",
     "map": "Globální situace",

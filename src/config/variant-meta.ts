@@ -127,4 +127,21 @@ export const VARIANT_META: { full: VariantMeta; [k: string]: VariantMeta } = {
       'Futures market data',
     ],
   },
+  football: {
+    title: 'Football Monitor - Global Football News Dashboard',
+    description: 'Real-time global football news dashboard with live match events, transfer news, and football intelligence from around the world.',
+    keywords: 'football news, soccer news, global football, match tracker, football monitor, transfer news, football intelligence, live scores, football map',
+    url: 'https://football.worldmonitor.app/',
+    siteName: 'Football Monitor',
+    shortName: 'FootballMonitor',
+    subject: 'Global Football News and Intelligence',
+    classification: 'Football Dashboard, Sports News Aggregator',
+    categories: ['news', 'sports'],
+    features: [
+      'Real-time football news',
+      'Global match tracking',
+      'Football news map',
+      'AI-powered briefings',
+    ],
+  },
 };

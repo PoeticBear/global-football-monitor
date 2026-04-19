@@ -151,6 +151,7 @@
     "filterSources": "Φιλτράρισμα πηγών...",
     "sourcesEnabled": "{{enabled}}/{{total}} ενεργές",
     "finance": "ΧΡΗΜΑΤΟΟΙΚΟΝΟΜΙΚΑ",
+    "football": "Football",
     "toggleTheme": "Εναλλαγή σκοτεινής/φωτεινής λειτουργίας",
     "panelDisplayCaption": "Επιλέξτε ποια πάνελ θα εμφανίζονται στον πίνακα ελέγχου",
     "tabGeneral": "Γενικά",
@@ -207,6 +208,8 @@
     "panelCatTradePolicy": "Εμπορική Πολιτική"
   },
   "panels": {
+    "footballNews": "Football News",
+    "footballBrief": "AI Brief",
     "liveNews": "Ζωντανές Ειδήσεις",
     "markets": "Αγορές",
     "map": "Παγκόσμια Κατάσταση",
